@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const DB = require('./config/keys').MONGO_URI;
-const user = require('./api/user');
-const profile = require('./api/profile');
-const post = require('./api/post');
+const user = require('./routes/api/user');
+const profile = require('./routes/api/profile');
+const post = require('./routes/api/post');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 //Middleware Setup
@@ -29,9 +29,9 @@ app.get('/', function(req, res) {
   res.send('Hello World');
 });
 
-app.use('/api/profile', profile);
+app.use('/api/profiles', profile);
 app.use('/api/users', user);
-app.use('/api/post', post);
+app.use('/api/posts', post);
 
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
 
